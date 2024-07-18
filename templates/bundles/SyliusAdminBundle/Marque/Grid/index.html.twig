@@ -1,0 +1,27 @@
+{# templates/bundles/SyliusAdminBundle/Marque/Grid/index.html.twig #}
+
+{% extends '@SyliusAdmin/Dashboard/index.html.twig' %}
+
+{% block content %}
+    <h1>Marques</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for marque in marques %}
+                <tr>
+                    <td>{{ marque.name }}</td>
+                    <td>{{ marque.description }}</td>
+                    <td>{{ marque.createdAt ? marque.createdAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                    <td>{{ marque.updatedAt ? marque.updatedAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

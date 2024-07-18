@@ -15,4 +15,14 @@ use Sylius\Component\Core\Model\Customer as BaseCustomer;
 #[ORM\Table(name: 'sylius_customer')]
 class Customer extends BaseCustomer
 {
+    // /**
+    //  * @ORM\Column(type="boolean", nullable=true)
+    //  */
+    // protected $subscribedToNewsletter;
+
+    // public function isSubscribedToNewsletter(): bool
+    // {
+    //     return (bool) $this->subscribedToNewsletter;
+    // }
+
 }

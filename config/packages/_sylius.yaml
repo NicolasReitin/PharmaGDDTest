@@ -91,6 +91,52 @@ sylius_customer:
             classes:
                 model: App\Entity\Customer\CustomerGroup
 
+# __________________________________________________________
+
+
+sylius_grid:
+    grids:
+        sylius_admin_customer:
+            fields:
+                subscribedToNewsletter:
+                    type: twig
+                    label: 'Subscribed to Newsletter'
+                    options:
+                        template: '@SyliusAdmin/Customer/Grid/Field/subscribedToNewsletter.html.twig'
+            filters:
+                subscribedToNewsletter:
+                    type: boolean
+                    label: 'Subscribed to Newsletter'
+                search:
+                    type: string
+                    label: sylius.ui.search
+                    options:
+                        fields: [code, name]
+
+        sylius_admin_marque:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: App\Entity\Marque
+            fields:
+                name:
+                    type: string
+                    label: "Nom"
+                description:
+                    type: twig
+                    label: 'Description'
+                    options:
+                        template: '@SyliusAdmin/Marque/Grid/Field/marque.html.twig'
+                createdAt:
+                    type: datetime
+                    label: "Date de création"
+                updatedAt:
+                    type: datetime
+                    label: "Date de modification"
+
+# __________________________________________________________
+
+
 sylius_locale:
     resources:
         locale:
@@ -260,3 +306,8 @@ sylius_theme:
             scan_depth: 1
             directories:
                 - "%kernel.project_dir%/themes"
+
+
+
+
+

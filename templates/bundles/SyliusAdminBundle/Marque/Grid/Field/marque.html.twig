@@ -1,0 +1,7 @@
+{# templates/bundles/SyliusAdminBundle/Marque/Grid/Field/marque.html.twig #}
+
+{% if data.description is not empty %}
+    {{ data.description | raw }}
+{% else %}
+    N/A
+{% endif %}
