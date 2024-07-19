@@ -1,6 +1,6 @@
 {# templates/bundles/SyliusAdminBundle/Marque/Grid/index.html.twig #}
 
-{% extends '@SyliusAdmin/Dashboard/index.html.twig' %}
+{# {% extends '@SyliusAdmin/Dashboard/index.html.twig' %}
 
 {% block content %}
     <h1>Marques</h1>
@@ -20,6 +20,46 @@
                     <td>{{ marque.description }}</td>
                     <td>{{ marque.createdAt ? marque.createdAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
                     <td>{{ marque.updatedAt ? marque.updatedAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %} #}
+
+
+{# templates/bundles/SyliusAdmin/Marque/Grid/index.html.twig #}
+
+{% extends '@SyliusAdmin/Dashboard/index.html.twig' %}
+
+{% block content %}
+    <h1>Marques</h1>
+
+    <a href="{{ path('admin_marque_new') }}" class="btn btn-success">Ajouter une nouvelle marque</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for marque in marques %}
+                <tr>
+                    <td>{{ marque.name }}</td>
+                    <td>{{ marque.description }}</td>
+                    <td>{{ marque.createdAt ? marque.createdAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                    <td>{{ marque.updatedAt ? marque.updatedAt|date('Y-m-d H:i:s') : 'N/A' }}</td>
+                    <td>
+                        <a href="{{ path('admin_marque_edit', {id: marque.id}) }}" class="btn btn-primary">Modifier</a>
+                        <form method="post" action="{{ path('admin_marque_delete', {id: marque.id}) }}" onsubmit="return confirm('Are you sure?');" style="display: inline;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ marque.id) }}">
+                            <button class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>

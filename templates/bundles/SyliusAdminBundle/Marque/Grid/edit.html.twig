@@ -1,0 +1,14 @@
+{# templates/bundles/SyliusAdmin/Marque/Grid/edit.html.twig #}
+
+{% extends '@SyliusAdmin/Dashboard/index.html.twig' %}
+
+{% block content %}
+    <h1>Modifier la marque</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary">Enregistrer les modifications</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('admin_marque_index') }}" class="btn btn-secondary">Retour à la liste</a>
+{% endblock %}
